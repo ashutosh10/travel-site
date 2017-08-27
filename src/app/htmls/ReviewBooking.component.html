@@ -1,0 +1,27 @@
+<div class="container" id="reviewBookingDetails" *ngIf="display">
+	<div class="panel panel-success" style="background-color:rgba(255,255,255,0.5);margin-top:7%">
+        <h1>Passenger Details</h1>
+        <ul>
+            <li>Name: {{bookingData.passengers[0].firstname}}  {{bookingData.passengers[0].lastname}}</li>
+            <li>Email : {{bookingData.passengers[0].email}}</li>
+            <li>Date of Birth : {{bookingData.passengers[0].dob}}</li>
+            <li>Phone : {{bookingData.passengers[0].phone}}</li>
+        </ul>
+        <br/><br/>
+        <h1>Itinerary Details</h1>
+        <ul>
+            <li>Flight : {{bookingData.itineraries[0].legs[0].flight.marketingAirlineCode}}{{bookingData.itineraries[0].legs[0].flight.flightNumber}} ( operated by {{bookingData.itineraries[0].legs[0].flight.operatingAirlineCode}}) </li>
+            <li>From {{bookingData.itineraries[0].legs[0].origin}} to {{bookingData.itineraries[0].legs[0].destination}}</li>
+            <li>Departs at : {{bookingData.itineraries[0].legs[0].flight.departureTime}}</li>
+            <li>Arrives at : {{bookingData.itineraries[0].legs[0].flight.arrivalTime}}</li>
+            <li>Class of Service : {{bookingData.itineraries[0].legs[0].flight.classOfService}}</li>
+        </ul>
+        <br/><br/>
+        <h1>Payment Details</h1>
+        <ul>
+            <li>Total Fare : {{bookingData.itineraries[0].fare}} {{bookingData.itineraries[0].fareCurrency}}</li>
+            <li>Paid by Credit Card</li>
+        </ul>
+
+	</div>
+</div>

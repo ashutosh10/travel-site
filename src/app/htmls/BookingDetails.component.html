@@ -1,0 +1,92 @@
+<div class="container" *ngIf="display">
+    <div class="container" id="userDetailsTable" *ngIf="showPaxDetailsForm">
+        <div class="container panel panel-success" style="background-color:rgba(255,255,255,0.5); margin-top:7%">
+            <div class="container col-md-6 col-md-offset-3 panel" style="background-color:rgba(255,255,255,0.5)">
+                <form role="form" class="simple-form" novalidate #paxDetailsForm="ngForm" (ngSubmit)="showPaymentOptions(paxDetailsForm)" >
+                    <div class="form-group" style="margin-top:10%">
+                        <h2 class="lead col-md-offset-3">Please fill in the passenger details</h2>
+                    </div>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" [(ngModel)]="first_name" name="first_name" required />
+                    </div>
+                    <div class="form-group" style="margin-top:8%">
+                        <label>Last Name</label>
+                        <div>
+                            <input type="text" class="form-control" [(ngModel)]="last_name" name="last_name" required />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:8%">
+                        <label>Date of Birth</label>
+                        <div>
+                            <input type="date" class="form-control" [(ngModel)]="dob" name="dob" required />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:8%">
+                        <label>Email Address</label>
+                        <div>
+                            <input type="text" class="form-control" [(ngModel)]="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:8%">
+                        <label>Phone Number</label>
+                        <div>
+                            <input type="text" class="form-control" [(ngModel)]="phone" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:8%">
+                        <button class="btn btn-primary col-md-offset-4" type="submit">Continue to Payment</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="paymentContainer" *ngIf='showPaymentDetails'>
+        <div class="container panel panel-success" style="background-color:rgba(255,255,255,0.5); margin-top:7%">
+            <div class="container col-md-6 col-md-offset-3 panel" style="background-color:rgba(255,255,255,0.5)">
+                <form role="form" class="simple-form" novalidate #paymentDetailsForm="ngForm" (ngSubmit)="submitDetails(paymentDetailsForm)">
+                    <div class="form-group" style="margin-top:10%">
+                        <h2 class="lead col-md-offset-3">Total Amount : {{totalBookingPrice}} {{bookingCurrency}}</h2>
+                    </div>
+                    <div class="form-group">
+                        <label>Card Type</label>
+                        <select ng-model="payment.card_type" class="form-control">
+                            <option value="">Card Type</option>
+                            <option value="">American Express</option>
+                            <option value="">Visa</option>
+                            <option value="">Mastercard</option>
+                            <option value="">UATP</option>
+                        </select>
+                    </div>
+                    <div class="form-group" style="margin-top:8%">
+                        <label>Card Number</label>
+                        <div>
+                            <input type="text" class="form-control" [(ngModel)]="card_number" name="card_number" required />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:8%">
+                        <label>Security Code</label>
+                        <div>
+                            <input type="text" class="form-control" [(ngModel)]="cvv" name="cvv" required />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:8%">
+                        <label>Expiry Date</label>
+                        <div>
+                            <input type="date" class="form-control" [(ngModel)]="expiry_date" name="expiry_date" required />
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top:8%">
+                        <label>Name on Card</label>
+                        <div>
+                            <input type="text" class="form-control" [(ngModel)]="name_on_card" name="name_on_card" required>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-offset-3" style="margin-top:8%">
+                        <button class="btn btn-primary btn-lg col-md-offset-3" type="submit">Review Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

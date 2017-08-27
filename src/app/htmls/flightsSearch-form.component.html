@@ -1,0 +1,46 @@
+<div class="container" style="margin-top:6%" id="searchFlight" *ngIf="display">
+	<div class="container col-md-6 col-md-offset-3 panel panel-success" style="background-color:rgba(255,255,255,0.5)">
+		<form role="form" class="simple-form" novalidate #flightSearchForm="ngForm" (ngSubmit)="searchAndDisplayFlights(flightSearchForm)" autocomplete="off">
+			<div class="form-group col-md-offset-3">
+				<h2 class="lead">Where do you want to go?</h2>
+			</div>
+			<div class="form-group">
+				<label>From</label>
+				<input type="text" class="form-control"
+					ng2-auto-complete
+					[(ngModel)] = 'origin_city'
+					name='origin_city'
+					[source] = 'observableSource.bind(this)'
+					[value-formatter]="valueFormatter"
+      				[list-formatter]="listFormatter"
+					min-chars=3 />
+			</div>
+			<div class="form-group">
+				<label>To</label>
+				<input type="text" class="form-control"
+					ng2-auto-complete
+					[(ngModel)] = 'destination_city'
+					name='destination_city'
+					[source] = 'observableSource.bind(this)'
+					[value-formatter]="valueFormatter"
+      				[list-formatter]="listFormatter"
+					min-chars=3 />
+			</div>
+			<div class="form-group" style="margin-top:10%">
+				<div class="form-inline">
+					<div class="form-group">
+						<label>Depart</label>
+						<input type="date" class="form-control" [(ngModel)]="departure_date"  name="departure_date" required>
+					</div>
+					<div class="form-group col-md-offset-1">
+						<label>Return</label>
+						<input type="date" class="form-control" ng-model="return_date" disabled>
+					</div>
+				</div>
+			</div>
+			<div class="form-group" style="margin-top:10%">
+				<button type="submit" class="btn btn-primary">Show Flights</button>
+			</div>
+		</form>
+	</div>
+</div>
